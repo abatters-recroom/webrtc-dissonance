@@ -20,6 +20,11 @@
 #include <sys/syscall.h>
 #endif
 
+// RR: allow custom implementation for NDA platforms
+#if defined(PLATFORM_THREAD_INCLUDE)
+#include PLATFORM_THREAD_INCLUDE
+#endif
+
 namespace rtc {
 
 PlatformThreadId CurrentThreadId() {
@@ -33,6 +38,9 @@ PlatformThreadId CurrentThreadId() {
   ret =  syscall(__NR_gettid);
 #elif defined(WEBRTC_ANDROID)
   ret = gettid();
+// RR: allow custom implementation for NDA platforms
+#elif defined(PLATFORM_THREAD_GETTHREADID)
+  ret = PLATFORM_THREAD_GETTHREADID;
 #else
   // Default implementation for nacl and solaris.
   ret = reinterpret_cast<pid_t>(pthread_self());

@@ -18,15 +18,15 @@
 #include "webrtc/system_wrappers/include/cpu_features_wrapper.h"
 
 /* Declare function pointers. */
-MaxAbsValueW16 WebRtcSpl_MaxAbsValueW16;
-MaxAbsValueW32 WebRtcSpl_MaxAbsValueW32;
-MaxValueW16 WebRtcSpl_MaxValueW16;
-MaxValueW32 WebRtcSpl_MaxValueW32;
-MinValueW16 WebRtcSpl_MinValueW16;
-MinValueW32 WebRtcSpl_MinValueW32;
-CrossCorrelation WebRtcSpl_CrossCorrelation;
-DownsampleFast WebRtcSpl_DownsampleFast;
-ScaleAndAddVectorsWithRound WebRtcSpl_ScaleAndAddVectorsWithRound;
+MaxAbsValueW16 WebRtcSpl_MaxAbsValueW16 = NULL;
+MaxAbsValueW32 WebRtcSpl_MaxAbsValueW32 = NULL;
+MaxValueW16 WebRtcSpl_MaxValueW16 = NULL;
+MaxValueW32 WebRtcSpl_MaxValueW32 = NULL;
+MinValueW16 WebRtcSpl_MinValueW16 = NULL;
+MinValueW32 WebRtcSpl_MinValueW32 = NULL;
+CrossCorrelation WebRtcSpl_CrossCorrelation = NULL;
+DownsampleFast WebRtcSpl_DownsampleFast = NULL;
+ScaleAndAddVectorsWithRound WebRtcSpl_ScaleAndAddVectorsWithRound = NULL;
 
 #if (!defined(WEBRTC_HAS_NEON)) && !defined(MIPS32_LE)
 /* Initialize function pointers to the generic C version. */
